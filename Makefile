@@ -84,6 +84,7 @@ $(LIB): $(LIBOBJS)
 clean:
 	rm -f $(LIBOBJS)
 	rm -f $(OBJS)
+	rm -f test
 
 fclean: clean
 	rm -f $(LIB)
@@ -96,5 +97,5 @@ norm:
 
 re: fclean all
 
-test:
+test: $(LIB) $(NAME)
 	$(CC) $(FLAGS) -L. -lft -lftprintf main.c -o test
