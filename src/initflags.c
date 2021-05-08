@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   initflags.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 21:18:59 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/06 23:44:26 by lvallie          ###   ########.fr       */
+/*   Created: 2021/05/07 22:34:44 by lvallie           #+#    #+#             */
+/*   Updated: 2021/05/07 22:41:39 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int	ft_printf(char *string, ...)
+void	initflags(t_type flags)
 {
-	va_list	ap;
-	int		printed_chars;
-
-	printed_chars = 0;
-	va_start(ap, string);
-	while (*string)
-	{
-		if (*string == '%')
-		{
-			if (!converter(&string, ap, &printed_chars))
-				return (-1);
-		}
-		else if (*string != '%')
-		{
-			write(1, string, 1);
-			printed_chars++;
-			string++;
-		}
-	}
-	va_end(ap);
-	return (printed_chars);
+	flags.minus = 0;
+	flags.dot = 0;
+	flags.nill = 0;
+	flags.precision = 0;
+	flags.width = 0;
+	flags.type = 0;
 }

@@ -63,7 +63,10 @@ LIBFT	= libft/ft_isdigit.c \
 		libft/ft_lstmap.c
 
 SRC		= src/ft_pointerout.c \
-		src/ft_printf.c
+		src/ft_printf.c \
+		src/converter.c \
+		src/initflags.c \
+		src/setupflags.c
 
 OBJS	= $(SRC:%.c=%.o)
 

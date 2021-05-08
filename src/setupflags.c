@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   setupflags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 21:18:59 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/06 23:44:26 by lvallie          ###   ########.fr       */
+/*   Created: 2021/05/08 15:26:55 by lvallie           #+#    #+#             */
+/*   Updated: 2021/05/08 15:56:59 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int	ft_printf(char *string, ...)
+int	setupflags(char **string, t_type flags)
 {
-	va_list	ap;
-	int		printed_chars;
-
-	printed_chars = 0;
-	va_start(ap, string);
-	while (*string)
+	while (ft_isalpha(**string) != 1)
 	{
-		if (*string == '%')
-		{
-			if (!converter(&string, ap, &printed_chars))
-				return (-1);
-		}
-		else if (*string != '%')
-		{
-			write(1, string, 1);
-			printed_chars++;
-			string++;
-		}
+		if (**string == '-')
+			flags.minus = 1;
+		if (**string == '0')
+			flags.nill = 1;
+		if (**string == '.')
+			flags.dot = 1;
+		if (**string == '*')
+			*string++;
 	}
-	va_end(ap);
-	return (printed_chars);
+	if (ft_strchr("cspdiuxX", **string) == NULL)
+		return (0);
+	return (1);
 }
