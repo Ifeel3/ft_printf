@@ -64,9 +64,10 @@ LIBFT	= libft/ft_isdigit.c \
 
 SRC		= src/ft_pointerout.c \
 		src/ft_printf.c \
-		src/converter.c \
-		src/initflags.c \
-		src/setupflags.c
+		src/ft_converter.c \
+		src/ft_initflags.c \
+		src/ft_setupflags.c \
+		src/ft_printpercent.c
 
 OBJS	= $(SRC:%.c=%.o)
 

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   converter.c                                        :+:      :+:    :+:   */
+/*   ft_printpercent.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 12:12:28 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/08 16:04:46 by lvallie          ###   ########.fr       */
+/*   Created: 2021/05/09 01:11:41 by lvallie           #+#    #+#             */
+/*   Updated: 2021/05/09 01:11:41 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../includes/libftprintf.h"
 
-int	converter(char **string, va_list ap, int *printed_chars)
+int ft_printpercent(char **string, int *printed_chars)
 {
-	t_type	flags;
-
-	flags = malloc(sizeof(t_type));
-	if (!flags)
+	if (*(*string + 1) == '%')
+	{
+		*printed_chars += 1;
+		*string += 2;
+		write(1, "%", 1);
+		return (1);
+	}
+	else
 		return (0);
-	initflags(flags);
-	setupflags(string, flags);
-	return (1);
 }
