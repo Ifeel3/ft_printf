@@ -4,14 +4,14 @@ LIB		= libft.a
 
 FLAGS	= -Wall -Werror -Wextra
 
-CFLAGS	= $(FLAGS) -I/includes/
+CFLAGS	= $(FLAGS) -I.
 
 CC		= gcc
 
 NORMIN	= norminette
 
-HEADERS	= includes/libft.h \
-		includes/libftprintf.h
+HEADERS	= libft.h \
+		libftprintf.h
 
 LIBFT	= libft/ft_isdigit.c \
 		libft/ft_islower.c \
@@ -62,12 +62,16 @@ LIBFT	= libft/ft_isdigit.c \
 		libft/ft_lstiter.c \
 		libft/ft_lstmap.c
 
-SRC		= src/ft_pointerout.c \
-		src/ft_printf.c \
+SRC		= src/ft_printf.c \
 		src/ft_converter.c \
 		src/ft_initflags.c \
 		src/ft_setupflags.c \
-		src/ft_printpercent.c
+		src/ft_printpercent.c \
+		src/ft_checktype.c \
+		src/ft_convertpointertohex.c \
+		src/ft_applyformattoptr.c \
+		src/ft_applyformattohex.c \
+		src/ft_convertinttohex.c
 
 OBJS	= $(SRC:%.c=%.o)
 

@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printpercent.c                                  :+:      :+:    :+:   */
+/*   ft_applyformattohex.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: lvallie <lvallie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 01:11:41 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/09 01:14:11 by lvallie          ###   ########.fr       */
+/*   Created: 2021/05/09 02:45:30 by lvallie           #+#    #+#             */
+/*   Updated: 2021/05/09 04:00:36 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../libftprintf.h"
 
-int	ft_printpercent(char **string, int *printed_chars)
+int	ft_applyformattohex(int number, t_type *flags, char format)
 {
-	if (*(*string + 1) == '%')
-	{
-		*printed_chars += 1;
-		*string += 2;
-		write(1, "%", 1);
-		return (1);
-	}
-	else
-		return (0);
+	char *string;
+
+	(void) flags;
+	(void) format;
+	string = ft_convertinttohex(number);
+	write(1, string, ft_strlen(string));
+	return ((int)ft_strlen(string));
 }

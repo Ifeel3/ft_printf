@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../libft.h"
 #include <stdio.h>
 
 static size_t	ft_findwords(char const *s, char c);

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pointerout.c                                    :+:      :+:    :+:   */
+/*   ft_convertpointertohex.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 21:17:14 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/04 21:17:14 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/09 02:15:17 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 
-static char	*convert_pointer(void *ptr, char format)
+char	*ft_convertpointertohex(void *ptr)
 {
 	intptr_t	ptraddr;
 	char		*s;
@@ -27,34 +27,9 @@ static char	*convert_pointer(void *ptr, char format)
 	s[i--] = 0;
 	while (i >= 0)
 	{
-		if (format == 'X')
-			s[i] = "0123456789ABCDEF"[ptraddr & 0x0F];
-		else
-			s[i] = "0123456789abcdef"[ptraddr & 0x0F];
+		s[i] = "0123456789abcdef"[ptraddr & 0x0F];
 		ptraddr >>= 4;
 		i--;
 	}
 	return (s);
-}
-
-int	ft_pointerout(void *ptr, char format)
-{
-	char	*string;
-	int		i;
-	int		j;
-
-	string = convert_pointer(ptr, format);
-	if (string == NULL)
-		return (-1);
-	i = 0;
-	j = 0;
-	while (string [i] == 48)
-		i++;
-	write(1, "0x", 2);
-	while (string[i + j] != 0)
-	{
-		write(1, &string[i + j], 1);
-		j++;
-	}
-	return (j + 2);
 }
