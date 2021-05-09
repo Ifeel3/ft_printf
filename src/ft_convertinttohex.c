@@ -6,13 +6,13 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 03:29:01 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/09 03:42:17 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/09 04:13:44 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-char	*ft_convertinttohex(int number)
+char	*ft_convertinttohex(int number, char type)
 {
 	int		tmp;
 	char	*s;
@@ -33,6 +33,8 @@ char	*ft_convertinttohex(int number)
 	while (i >= 0)
 	{
 		s[i] = "0123456789abcdef"[tmp & 0x0F];
+		if (ft_isupper(type))
+			s[i] = "0123456789ABCDEF"[tmp & 0x0F];
 		tmp >>= 4;
 		i--;
 	}
