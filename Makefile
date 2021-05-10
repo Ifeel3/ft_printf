@@ -71,7 +71,10 @@ SRC		= src/ft_printf.c \
 		src/ft_convertpointertohex.c \
 		src/ft_applyformattoptr.c \
 		src/ft_applyformattohex.c \
-		src/ft_convertinttohex.c
+		src/ft_convertinttohex.c \
+		src/ft_applyformattoint.c \
+		src/ft_applyformattostr.c \
+		src/ft_applyformattochr.c
 
 OBJS	= $(SRC:%.c=%.o)
 

@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 01:12:29 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/09 04:02:28 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/10 13:35:49 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,7 @@ char	*ft_convertinttohex(int number, char type);
 void	ft_checktype(t_type *flags, int *printed_chars, va_list ap);
 int		ft_applyformattoptr(void *ptr, t_type *flags);
 int		ft_applyformattohex(int number, t_type *flags, char format);
+int		ft_applyformattoint(int number, t_type *flags);
+int		ft_applyformattostr(char *string, t_type *flags);
+int		ft_applyformattochr(int c, t_type *flags);
 #endif
