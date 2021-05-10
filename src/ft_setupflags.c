@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 15:26:55 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/09 02:37:38 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/10 18:00:44 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,15 @@ int	ft_setupflags(char **string, t_type *flags, va_list ap)
 		if (**string == '0')
 			flags->nill = 1;
 		if (**string == '.')
-		{
 			flags->dot = 1;
-			if (ft_isdigit(*(*string - 1)) && *(*string - 1) != 0)
-				flags->width = *(*string - 1) - 48;
-			if (*(*string - 1) == '*')
-				flags->width = va_arg(ap, int);
-			if (ft_isdigit(*(*string + 1)))
-				flags->precision = *(*string + 1) - 48;
-			if (*(*string + 1) == '*')
-				flags->precision = va_arg(ap, int);
-		}
+		if (ft_isdigit(**string) && flags->dot != 1)
+			flags->width = (flags->width * 10) + **string - 48;
+		if (ft_isdigit(**string) && flags->dot == 1)
+			flags->precision = (flags->precision * 10) + **string - 48;
+		if (*(*string - 1) == '*' && flags->dot != 1)
+			flags->width = va_arg(ap, int);
+		if (*(*string + 1) == '*' && flags->dot == 1)
+			flags->precision = va_arg(ap, int);
 	}
 	if (ft_strchr("cspdiuxX", **string) == NULL)
 		return (0);
