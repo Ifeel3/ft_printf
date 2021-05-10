@@ -25,5 +25,6 @@ int	ft_converter(char **string, va_list ap, int *printed_chars)
 	if (!ft_setupflags(string, flags, ap))
 		return (0);
 	ft_checktype(flags, printed_chars, ap);
+	free(flags);
 	return (1);
 }

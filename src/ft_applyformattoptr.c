@@ -14,11 +14,14 @@
 
 int	ft_applyformattoptr(void *ptr, t_type *flags)
 {
-	char *string;
+	char	*string;
+	int		len;
 
 	(void) flags;
 	string = ft_convertpointertohex(ptr);
+	len = (int)ft_strlen(string);
 	write(1, "0x", 2);
 	write(1, string, ft_strlen(string));
-	return ((int)ft_strlen(string) + 2);
+	free(string);
+	return (len + 2);
 }

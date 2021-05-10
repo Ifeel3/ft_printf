@@ -14,11 +14,14 @@
 
 int	ft_applyformattohex(int number, t_type *flags, char format)
 {
-	char *string;
+	char	*string;
+	int		len;
 
 	(void) flags;
 	(void) format;
 	string = ft_convertinttohex(number, format);
+	len = (int)ft_strlen(string);
 	write(1, string, ft_strlen(string));
-	return ((int)ft_strlen(string));
+	free(string);
+	return (len);
 }

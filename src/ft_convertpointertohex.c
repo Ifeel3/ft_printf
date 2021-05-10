@@ -6,12 +6,25 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 21:17:14 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/09 02:15:17 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/10 14:23:37 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
+
+static void	shiftstring(char *string)
+{
+	char *start;
+
+	start = string;
+	while (*string == '0')
+		string++;
+	while (*string)
+		*start++ = *string++;
+	while (*start)
+		*start++ = 0;
+}
 
 char	*ft_convertpointertohex(void *ptr)
 {
@@ -31,5 +44,6 @@ char	*ft_convertpointertohex(void *ptr)
 		ptraddr >>= 4;
 		i--;
 	}
+	shiftstring(s);
 	return (s);
 }
