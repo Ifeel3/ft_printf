@@ -14,7 +14,7 @@
 
 void	ft_checktype(t_type *flags, int *printed_chars, va_list ap)
 {
-	char type;
+	char	type;
 
 	type = flags->type;
 	if (type == 'c')

@@ -15,7 +15,7 @@
 
 static void	shiftstring(char *string)
 {
-	char *start;
+	char	*start;
 
 	start = string;
 	while (*string == '0')
