@@ -6,11 +6,11 @@
 /*   By: lvallie <lvallie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 13:33:40 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/11 20:29:34 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/11 23:08:45 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 static void	printnullorspace(t_type *flags, size_t width, size_t precision)
 {

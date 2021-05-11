@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 int	ft_applyformattoptr(void *ptr, t_type *flags)
 {

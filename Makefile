@@ -1,7 +1,5 @@
 NAME	= libftprintf.a
 
-LIB		= libft.a
-
 FLAGS	= -Wall -Werror -Wextra
 
 CFLAGS	= $(FLAGS) -I.
@@ -11,7 +9,7 @@ CC		= gcc
 NORMIN	= norminette
 
 HEADERS	= libft.h \
-		libftprintf.h
+		ft_printf.h
 
 LIBFT	= libft/ft_isdigit.c \
 		libft/ft_islower.c \
@@ -75,6 +73,7 @@ SRC		= src/ft_printf.c \
 		src/ft_applyformattostr.c \
 		src/ft_applyformattochr.c \
 		src/ft_applyformattoint.c \
+		src/ft_applyformattouint.c \
 		src/ft_itoau.c
 
 OBJS	= $(SRC:%.c=%.o)
@@ -85,13 +84,8 @@ LIBOBJS	= $(LIBFT:%.c=%.o)
 
 all: $(LIB) $(NAME)
 
-$(NAME): $(LIB) $(OBJS)
-	ar rc $@ $(OBJS)
-	ranlib $@
-
-$(LIB): $(LIBOBJS)
-	ar rc $@ $(LIBOBJS)
-	ranlib $@
+$(NAME): $(LIB) $(LIBOBJS) $(OBJS)
+	ar rcs $@ $(LIBOBJS) $(OBJS)
 
 clean:
 	rm -f $(LIBOBJS)
@@ -110,4 +104,4 @@ norm:
 re: fclean all
 
 test: $(LIB) $(NAME)
-	$(CC) $(FLAGS) -L. -lft -lftprintf main.c -o test
+	$(CC) $(FLAGS) -L. -lft main.c -o test

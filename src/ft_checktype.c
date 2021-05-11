@@ -6,11 +6,11 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 01:14:50 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/11 14:23:10 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/11 20:37:10 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 void	ft_checktype(t_type *flags, int *printed_chars, va_list ap)
 {

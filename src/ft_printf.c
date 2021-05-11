@@ -6,11 +6,11 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 21:18:59 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/09 01:10:24 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/11 22:35:48 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 int	ft_printf(char *string, ...)
 {

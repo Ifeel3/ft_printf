@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_applyformattouint.c                              :+:      :+:    :+:   */
+/*   ft_applyformattouint.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/10 13:24:30 by lvallie           #+#    #+#             *//*   Updated: 2021/05/11 20:37:10 by lvallie          ###   ########.fr       */
-
+/*   Created: 2021/05/10 13:24:30 by lvallie           #+#    #+#             */
+/*   Updated: 2021/05/11 22:01:51 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "../ft_printf.h"
 
 int	ft_applyformattouint(unsigned int number, t_type *flags)
 {

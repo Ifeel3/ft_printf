@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "../ft_printf.h"
 
 static void	shiftstring(char *string)
 {
