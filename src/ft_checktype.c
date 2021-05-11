@@ -30,5 +30,5 @@ void	ft_checktype(t_type *flags, int *printed_chars, va_list ap)
 	if (type == 'x' || type == 'X')
 		*printed_chars += ft_applyformattohex(va_arg(ap, int), flags, type);
 	if (type == 'u')
-		*printed_chars += ft_applyformattoint(va_arg(ap, unsigned int), flags);
+		*printed_chars += ft_applyformattouint(va_arg(ap, unsigned int), flags);
 }

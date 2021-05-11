@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 13:33:40 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/11 20:27:33 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/11 20:29:34 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	ft_applyformattostr(char *string, t_type *flags)
 {
 	size_t	precision;
 	size_t	width;
-	size_t	tmp;
 
 	if (string == NULL)
 		string = "(null)";
@@ -36,12 +35,12 @@ int	ft_applyformattostr(char *string, t_type *flags)
 		precision = ft_strlen(string);
 	else
 	{
-		if (flags->precision > ft_strlen(string))
+		if ((size_t)flags->precision > ft_strlen(string))
 			precision = ft_strlen(string);
 		else
 			precision = flags->precision;
 	}
-	if (flags->width > precision)
+	if ((size_t)flags->width > precision)
 		width = flags->width;
 	else
 		width = precision;
