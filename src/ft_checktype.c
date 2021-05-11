@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 01:14:50 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/10 13:35:49 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/11 14:23:10 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_checktype(t_type *flags, int *printed_chars, va_list ap)
 	type = flags->type;
 	if (type == 'c')
 		*printed_chars += ft_applyformattochr(va_arg(ap, int), flags);
+	if (type == '%')
+		*printed_chars += ft_applyformattochr('%', flags);
 	if (type == 's')
 		*printed_chars += ft_applyformattostr(va_arg(ap, char *), flags);
 	if (type == 'p')

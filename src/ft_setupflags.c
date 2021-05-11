@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 15:26:55 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/10 18:00:44 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/11 15:14:01 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_setupflags(char **string, t_type *flags, va_list ap)
 {
-	while (ft_isalpha(*(++(*string))) != 1)
+	while (ft_isalpha(*(++(*string))) != 1 && **string != '%')
 	{
 		if (**string == '-')
 			flags->minus = 1;
@@ -31,7 +31,7 @@ int	ft_setupflags(char **string, t_type *flags, va_list ap)
 		if (*(*string + 1) == '*' && flags->dot == 1)
 			flags->precision = va_arg(ap, int);
 	}
-	if (ft_strchr("cspdiuxX", **string) == NULL)
+	if (ft_strchr("cspdiuxX%", **string) == NULL)
 		return (0);
 	flags->type = **string;
 	(*string)++;

@@ -66,7 +66,6 @@ SRC		= src/ft_printf.c \
 		src/ft_converter.c \
 		src/ft_initflags.c \
 		src/ft_setupflags.c \
-		src/ft_printpercent.c \
 		src/ft_checktype.c \
 		src/ft_convertpointertohex.c \
 		src/ft_applyformattoptr.c \

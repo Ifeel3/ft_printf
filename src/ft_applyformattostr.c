@@ -6,11 +6,23 @@
 /*   By: lvallie <lvallie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 13:33:40 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/11 14:38:49 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/11 20:27:33 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
+
+static void	printnullorspace(t_type *flags, size_t width, size_t precision)
+{
+	char	chr;
+
+	if (flags->minus != 1 && flags->nill == 1)
+		chr = '0';
+	else
+		chr = ' ';
+	while (width-- > precision)
+		write(1, &chr, 1);
+}
 
 int	ft_applyformattostr(char *string, t_type *flags)
 {
@@ -18,6 +30,8 @@ int	ft_applyformattostr(char *string, t_type *flags)
 	size_t	width;
 	size_t	tmp;
 
+	if (string == NULL)
+		string = "(null)";
 	if (flags->dot == 0)
 		precision = ft_strlen(string);
 	else
@@ -33,9 +47,7 @@ int	ft_applyformattostr(char *string, t_type *flags)
 		width = precision;
 	if (flags->minus == 1)
 		write(1, string, precision);
-	tmp = width;
-	while (tmp-- > precision)
-		write(1, " ", 1);
+	printnullorspace(flags, width, precision);
 	if (flags->minus == 0)
 		write(1, string, precision);
 	return ((int)width);
