@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-int	ft_applyformattochr(int c, t_type *flags)
+int	ptf_applyformattochr(int c, t_type *flags)
 {
 	size_t	width;
 	size_t	tmplen;

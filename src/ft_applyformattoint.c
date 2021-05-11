@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-int	ft_applyformattoint(int number, t_type *flags)
+int	ptf_applyformattoint(int number, t_type *flags)
 {
 	char	*string;
 	int		len;

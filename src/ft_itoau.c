@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static int	ft_howbig(unsigned int c)
+static int	ptf_howbig(unsigned int c)
 {
 	int	i;
 
@@ -31,14 +31,14 @@ static int	ft_howbig(unsigned int c)
 	return (i);
 }
 
-char	*ft_itoau(unsigned int n)
+char	*ptf_itoau(unsigned int n)
 {
 	char	*result;
 	int		i;
 
 	if (n == 0)
 		return (ft_strdup("0"));
-	i = ft_howbig(n);
+	i = ptf_howbig(n);
 	result = malloc(sizeof(char) * i + 1);
 	if (result == NULL)
 		return (NULL);

@@ -12,23 +12,23 @@
 
 #include "../ft_printf.h"
 
-void	ft_checktype(t_type *flags, int *printed_chars, va_list ap)
+void	ptf_checktype(t_type *flags, int *printed_chars, va_list ap)
 {
 	char	type;
 
 	type = flags->type;
 	if (type == 'c')
-		*printed_chars += ft_applyformattochr(va_arg(ap, int), flags);
+		*printed_chars += ptf_applyformattochr(va_arg(ap, int), flags);
 	if (type == '%')
-		*printed_chars += ft_applyformattochr('%', flags);
+		*printed_chars += ptf_applyformattochr('%', flags);
 	if (type == 's')
-		*printed_chars += ft_applyformattostr(va_arg(ap, char *), flags);
+		*printed_chars += ptf_applyformattostr(va_arg(ap, char *), flags);
 	if (type == 'p')
-		*printed_chars += ft_applyformattoptr(va_arg(ap, void *), flags);
+		*printed_chars += ptf_applyformattoptr(va_arg(ap, void *), flags);
 	if (type == 'd' || type == 'i')
-		*printed_chars += ft_applyformattoint(va_arg(ap, int), flags);
+		*printed_chars += ptf_applyformattoint(va_arg(ap, int), flags);
 	if (type == 'x' || type == 'X')
-		*printed_chars += ft_applyformattohex(va_arg(ap, int), flags, type);
+		*printed_chars += ptf_applyformattohex(va_arg(ap, int), flags, type);
 	if (type == 'u')
-		*printed_chars += ft_applyformattouint(va_arg(ap, unsigned int), flags);
+		*printed_chars += ptf_applyformattouint(va_arg(ap, unsigned int), flags);
 }

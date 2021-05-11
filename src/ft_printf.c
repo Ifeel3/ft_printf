@@ -23,7 +23,7 @@ int	ft_printf(char *string, ...)
 	{
 		if (*string == '%')
 		{
-			if (!ft_converter(&string, ap, &printed_chars))
+			if (!ptf_converter(&string, ap, &printed_chars))
 				return (-1);
 		}
 		else if (*string != '%')

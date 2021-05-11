@@ -6,14 +6,25 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 15:26:55 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/11 22:24:58 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/11 23:35:54 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_setupflags(char **string, t_type *flags, va_list ap)
+static void	ptf_initflags(t_type *flags)
 {
+	flags->minus = 0;
+	flags->dot = 0;
+	flags->nill = 0;
+	flags->precision = 0;
+	flags->width = 0;
+	flags->type = 0;
+}
+
+int	ptf_setupflags(char **string, t_type *flags, va_list ap)
+{
+	ptf_initflags(flags);
 	while (ft_isalpha(*(++(*string))) != 1 && **string != '%')
 	{
 		if (**string == '-')

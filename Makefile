@@ -62,13 +62,10 @@ LIBFT	= libft/ft_isdigit.c \
 
 SRC		= src/ft_printf.c \
 		src/ft_converter.c \
-		src/ft_initflags.c \
 		src/ft_setupflags.c \
 		src/ft_checktype.c \
-		src/ft_convertpointertohex.c \
 		src/ft_applyformattoptr.c \
 		src/ft_applyformattohex.c \
-		src/ft_convertinttohex.c \
 		src/ft_applyformattoint.c \
 		src/ft_applyformattostr.c \
 		src/ft_applyformattochr.c \
@@ -104,4 +101,4 @@ norm:
 re: fclean all
 
 test: $(LIB) $(NAME)
-	$(CC) $(FLAGS) -L. -lft main.c -o test
+	$(CC) $(FLAGS) -L. -lftprintf main.c -o test

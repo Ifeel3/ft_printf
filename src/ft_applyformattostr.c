@@ -6,13 +6,13 @@
 /*   By: lvallie <lvallie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 13:33:40 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/11 23:08:45 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/11 23:10:24 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static void	printnullorspace(t_type *flags, size_t width, size_t precision)
+static void	ptf_printnullorspace(t_type *flags, size_t width, size_t precision)
 {
 	char	chr;
 
@@ -24,7 +24,7 @@ static void	printnullorspace(t_type *flags, size_t width, size_t precision)
 		write(1, &chr, 1);
 }
 
-int	ft_applyformattostr(char *string, t_type *flags)
+int	ptf_applyformattostr(char *string, t_type *flags)
 {
 	size_t	precision;
 	size_t	width;
@@ -46,7 +46,7 @@ int	ft_applyformattostr(char *string, t_type *flags)
 		width = precision;
 	if (flags->minus == 1)
 		write(1, string, precision);
-	printnullorspace(flags, width, precision);
+	ptf_printnullorspace(flags, width, precision);
 	if (flags->minus == 0)
 		write(1, string, precision);
 	return ((int)width);

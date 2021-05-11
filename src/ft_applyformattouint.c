@@ -12,13 +12,13 @@
 
 #include "../ft_printf.h"
 
-int	ft_applyformattouint(unsigned int number, t_type *flags)
+int	ptf_applyformattouint(unsigned int number, t_type *flags)
 {
 	char	*string;
 	int		len;
 
 	(void) flags;
-	string = ft_itoau(number);
+	string = ptf_itoau(number);
 	len = (int)ft_strlen(string);
 	write(1, string, ft_strlen(string));
 	free(string);
