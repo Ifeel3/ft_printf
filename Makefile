@@ -64,13 +64,13 @@ SRC		= src/ft_printf.c \
 		src/ft_converter.c \
 		src/ft_setupflags.c \
 		src/ft_checktype.c \
-		src/ft_applyformattoptr.c \
-		src/ft_applyformattohex.c \
-		src/ft_applyformattoint.c \
-		src/ft_applyformattostr.c \
-		src/ft_applyformattochr.c \
-		src/ft_applyformattoint.c \
-		src/ft_applyformattouint.c \
+		src/ft_formattoptr.c \
+		src/ft_formattohex.c \
+		src/ft_formattoint.c \
+		src/ft_formattostr.c \
+		src/ft_formattochr.c \
+		src/ft_formattoint.c \
+		src/ft_formattouint.c \
 		src/ft_itoau.c
 
 OBJS	= $(SRC:%.c=%.o)

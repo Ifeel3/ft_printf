@@ -41,7 +41,7 @@ static char	*ptf_convertinttohex(int number, char type)
 	return (s);
 }
 
-int	ptf_applyformattohex(int number, t_type *flags, char format)
+int	ptf_formattohex(int number, t_type *flags, char format)
 {
 	char	*string;
 	int		len;

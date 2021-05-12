@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 01:55:16 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/11 23:35:54 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/12 22:20:07 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,53 @@ static char	*ptf_convertpointertohex(void *ptr)
 	return (s);
 }
 
-int	ptf_applyformattoptr(void *ptr, t_type *flags)
+static void	widandprec(char *str, size_t *wid, size_t *prec, t_type *flags)
+{
+	if (flags->dot == 1)
+	{
+		if ((size_t)flags->precision > ft_strlen(str))
+			*prec = flags->precision;
+		else
+			*prec = ft_strlen(str);
+	}
+	else
+		*prec = ft_strlen(str);
+	if ((size_t)flags->width > *prec + 2)
+		*wid = flags->width;
+	else
+		*wid = *prec + 2;
+}
+
+static void	printspace(size_t count1, size_t count2)
+{
+	while (count1-- > count2 + 2)
+		write(1, " ", 1);
+}
+
+int	ptf_formattoptr(void *ptr, t_type *flags)
 {
 	char	*string;
-	int		len;
+	size_t	precision;
+	size_t	width;
+	size_t	tmp;
 
-	(void) flags;
-	string = ptf_convertpointertohex(ptr);
-	len = (int)ft_strlen(string);
+	if (ptr == NULL && flags->dot == 0)
+		string = "0";
+	else if (ptr == NULL && flags->dot == 1)
+		string = "";
+	else
+		string = ptf_convertpointertohex(ptr);
+	widandprec(string, &width, &precision, flags);
+	if (flags->minus != 1)
+		printspace(width, precision);
 	write(1, "0x", 2);
+	tmp = precision;
+	while (tmp-- > ft_strlen(string))
+		write(1, "0", 1);
 	write(1, string, ft_strlen(string));
-	free(string);
-	return (len + 2);
+	if (flags->minus == 1)
+		printspace(width, precision);
+	if (ptr)
+		free(string);
+	return ((int)width);
 }

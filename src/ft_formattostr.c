@@ -24,7 +24,7 @@ static void	ptf_printnullorspace(t_type *flags, size_t width, size_t precision)
 		write(1, &chr, 1);
 }
 
-int	ptf_applyformattostr(char *string, t_type *flags)
+int	ptf_formattostr(char *string, t_type *flags)
 {
 	size_t	precision;
 	size_t	width;
