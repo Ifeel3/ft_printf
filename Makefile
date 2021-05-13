@@ -65,23 +65,21 @@ SRC		= src/ft_printf.c \
 		src/ft_setupflags.c \
 		src/ft_checktype.c \
 		src/ft_formattoptr.c \
-		src/ft_formattohex.c \
 		src/ft_formattoint.c \
 		src/ft_formattostr.c \
 		src/ft_formattochr.c \
-		src/ft_formattoint.c \
-		src/ft_formattouint.c \
+		src/ft_convertinthex.c \
 		src/ft_itoau.c
 
 OBJS	= $(SRC:%.c=%.o)
 
 LIBOBJS	= $(LIBFT:%.c=%.o)
 
-.PHONY: all clean fclean re norm
+.PHONY: all clean fclean re norm test
 
-all: $(LIB) $(NAME)
+all: $(NAME)
 
-$(NAME): $(LIB) $(LIBOBJS) $(OBJS)
+$(NAME): $(LIBOBJS) $(OBJS)
 	ar rcs $@ $(LIBOBJS) $(OBJS)
 
 clean:
@@ -93,12 +91,12 @@ fclean: clean
 	rm -f $(LIB)
 	rm -f $(NAME)
 
+re: fclean all
+
 norm:
 	$(NORMIN) -R CheckForbiddenSourceHeader $(LIBFT)
 	$(NORMIN) -R CheckForbiddenSourceHeader $(SRC)
 	$(NORMIN) $(HEADERS)
-
-re: fclean all
 
 test: $(LIB) $(NAME)
 	$(CC) $(FLAGS) -L. -lftprintf main.c -o test

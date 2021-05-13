@@ -31,9 +31,9 @@ int		ptf_setupflags(char **string, t_type *flags, va_list ap);
 char	*ptf_itoau(unsigned int n);
 void	ptf_checktype(t_type *flags, int *printed_chars, va_list ap);
 int		ptf_formattoptr(void *ptr, t_type *flags);
-int		ptf_formattohex(int number, t_type *flags, char format);
 int		ptf_formattoint(int number, t_type *flags);
 int		ptf_formattostr(char *string, t_type *flags);
 int		ptf_formattochr(int c, t_type *flags);
-int		ptf_formattouint(unsigned int number, t_type *flags);
+char	*ptf_convertinttohexlow(int number);
+char	*ptf_convertinttohexup(int number);
 #endif

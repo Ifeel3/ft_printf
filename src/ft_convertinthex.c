@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_applyformattohex.c                              :+:      :+:    :+:   */
+/*   ft_convertinthex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvallie <lvallie@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 02:45:30 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/11 23:35:54 by lvallie          ###   ########.fr       */
+/*   Created: 2021/05/13 02:46:33 by lvallie           #+#    #+#             */
+/*   Updated: 2021/05/13 02:49:57 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static char	*ptf_convertinttohex(int number, char type)
+char	*ptf_convertinttohexlow(int number)
 {
 	int		tmp;
 	char	*s;
 	int		i;
 
+	if (number == 0)
+		return (ft_strdup("0"));
 	tmp = number;
 	i = 0;
 	while (tmp != 0)
@@ -33,24 +35,37 @@ static char	*ptf_convertinttohex(int number, char type)
 	while (i >= 0)
 	{
 		s[i] = "0123456789abcdef"[tmp & 0x0F];
-		if (ft_isupper(type))
-			s[i] = "0123456789ABCDEF"[tmp & 0x0F];
 		tmp >>= 4;
 		i--;
 	}
 	return (s);
 }
 
-int	ptf_formattohex(int number, t_type *flags, char format)
+char	*ptf_convertinttohexup(int number)
 {
-	char	*string;
-	int		len;
+	int		tmp;
+	char	*s;
+	int		i;
 
-	(void) flags;
-	(void) format;
-	string = ptf_convertinttohex(number, format);
-	len = (int)ft_strlen(string);
-	write(1, string, ft_strlen(string));
-	free(string);
-	return (len);
+	if (number == 0)
+		return (ft_strdup("0"));
+	tmp = number;
+	i = 0;
+	while (tmp != 0)
+	{
+		tmp >>= 4;
+		i++;
+	}
+	s = malloc(sizeof(char) * (i + 1));
+	if (!s)
+		return (NULL);
+	tmp = number;
+	s[i--] = 0;
+	while (i >= 0)
+	{
+		s[i] = "0123456789ABCDEF"[tmp & 0x0F];
+		tmp >>= 4;
+		i--;
+	}
+	return (s);
 }
