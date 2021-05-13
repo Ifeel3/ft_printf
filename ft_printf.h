@@ -20,8 +20,8 @@ typedef struct s_type
 	size_t	minus;
 	size_t	nill;
 	size_t	dot;
-	size_t	width;
-	size_t	precision;
+	int		width;
+	int		precision;
 	char	type;
 }				t_type;
 

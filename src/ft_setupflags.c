@@ -37,9 +37,9 @@ int	ptf_setupflags(char **string, t_type *flags, va_list ap)
 			flags->width = (flags->width * 10) + **string - 48;
 		if (ft_isdigit(**string) && flags->dot == 1)
 			flags->precision = (flags->precision * 10) + **string - 48;
-		if (*(*string - 1) == '*' && flags->dot != 1)
+		if (**string == '*' && flags->dot != 1)
 			flags->width = va_arg(ap, int);
-		if (*(*string + 1) == '*' && flags->dot == 1)
+		if (**string == '*' && flags->dot == 1)
 			flags->precision = va_arg(ap, int);
 	}
 	if (ft_strchr("cspdiuxX%", **string) == NULL)

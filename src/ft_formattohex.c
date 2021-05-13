@@ -19,12 +19,12 @@ static void	widandprec(long long int num, t_type *fl, size_t *wid, size_t *prec)
 		*prec = 0;
 	else if (fl->dot == 1)
 	{
-		if (fl->precision < ft_countnbr_hex(num))
+		if (fl->precision < (int)ft_countnbr_hex(num))
 			*prec = ft_countnbr_hex(num);
 		else
 			*prec = fl->precision;
 	}
-	if (fl->width > *prec)
+	if (fl->width > (int)*prec)
 		*wid = fl->width;
 	else
 		*wid = *prec;

@@ -70,8 +70,7 @@ SRC		= src/ft_printf.c \
 		src/ft_formattochr.c \
 		src/ft_putnbr_hex.c \
 		src/ft_putnbr_dec.c \
-		src/ft_formattohex.c \
-		src/ft_itoau.c
+		src/ft_formattohex.c
 
 OBJS	= $(SRC:%.c=%.o)
 
@@ -90,7 +89,6 @@ clean:
 	rm -f test
 
 fclean: clean
-	rm -f $(LIB)
 	rm -f $(NAME)
 
 re: fclean all
@@ -101,4 +99,4 @@ norm:
 	$(NORMIN) $(HEADERS)
 
 test: $(LIB) $(NAME)
-	$(CC) $(FLAGS) -L. -lftprintf main.c -o test
+	$(CC) $(FLAGS) -L. -lftprintf main.c -o test && ./test
