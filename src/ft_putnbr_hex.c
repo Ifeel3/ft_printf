@@ -19,7 +19,7 @@ size_t	ft_countnbr_hex(long long int number)
 	counter = 0;
 	if (number < 0)
 		number = -number;
-	if (number > 16)
+	if (number > 15)
 		counter = ft_countnbr_hex(number >> 4);
 	return (counter + 1);
 }
@@ -29,7 +29,7 @@ size_t	ft_putnbr_hex(unsigned long long int number, int type)
 	size_t	counter;
 
 	counter = 0;
-	if (number > 16)
+	if (number > 15)
 		counter = ft_putnbr_hex(number >> 4, type);
 	if (type == 'x')
 		write(1, &"0123456789abcdef"[number & 0x0F], 1);

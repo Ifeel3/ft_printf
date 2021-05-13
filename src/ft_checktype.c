@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 01:14:50 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/13 18:02:25 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/13 22:07:25 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	ptf_checktype(t_type *flags, int *printed_chars, va_list ap)
 		*printed_chars += ptf_formattostr(va_arg(ap, char *), flags);
 	if (type == 'p')
 		*printed_chars += ptf_formattoptr(va_arg(ap, void *), flags);
-	if (type == 'd' || type == 'i' || type == 'x' || type == 'X')
+	if (type == 'd' || type == 'i')
 		*printed_chars += ptf_formattoint(va_arg(ap, int), flags);
+	if (type == 'x' || type == 'X')
+		*printed_chars += ptf_formattohex(va_arg(ap, long long int), flags);
 	if (type == 'u')
 		*printed_chars += ptf_formattoint(va_arg(ap, unsigned int), flags);
 }
