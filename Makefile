@@ -68,7 +68,8 @@ SRC		= src/ft_printf.c \
 		src/ft_formattoint.c \
 		src/ft_formattostr.c \
 		src/ft_formattochr.c \
-		src/ft_convertinthex.c \
+		src/ft_putnbr_hex.c \
+		src/ft_putnbr_dec.c \
 		src/ft_itoau.c
 
 OBJS	= $(SRC:%.c=%.o)
@@ -79,7 +80,7 @@ LIBOBJS	= $(LIBFT:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBOBJS) $(OBJS)
+$(NAME): $(LIBOBJS) $(OBJS) libft.h ft_printf.h
 	ar rcs $@ $(LIBOBJS) $(OBJS)
 
 clean:

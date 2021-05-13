@@ -6,24 +6,26 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 13:24:30 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/13 02:46:20 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/13 18:15:50 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static void	widandprec(char *str, t_type *flags, size_t *wid, size_t *prec)
+static void	widandprec(long long int num, t_type *fl, size_t *wid, size_t *prec)
 {
-	*prec = ft_strlen(str);
-	if (flags->dot == 1)
+	*prec = ft_countnbr_dec(num);
+	if (num == 0 && fl->dot == 1 && fl->precision == 0)
+		*prec = 0;
+	else if (fl->dot == 1)
 	{
-		if ((size_t)flags->precision < ft_strlen(str))
-			*prec = ft_strlen(str);
+		if (fl->precision < ft_countnbr_dec(num))
+			*prec = ft_countnbr_dec(num);
 		else
-			*prec = flags->precision;
+			*prec = fl->precision;
 	}
-	if ((size_t)flags->width > *prec)
-		*wid = flags->width;
+	if (fl->width > *prec)
+		*wid = fl->width;
 	else
 		*wid = *prec;
 }
@@ -34,42 +36,27 @@ static void	printspace(size_t count1, size_t count2, int chr)
 		write(1, &chr, 1);
 }
 
-static void	getstring(t_type *flags, int number, char **string, char *chr)
+int	ptf_formattoint(long long int number, t_type *flags)
 {
-	if (flags->nill == 1 && flags->dot != 1)
-		*chr = '0';
-	else
-		*chr = ' ';
-	(void) chr;
-	if (flags->type == 'x')
-		*string = ptf_convertinttohexlow(number);
-	else if (flags->type == 'X')
-		*string = ptf_convertinttohexup(number);
-	else if (flags->type == 'u')
-		*string = ptf_itoau(number);
-	else
-		*string = ft_itoa(number);
-}
-
-int	ptf_formattoint(int number, t_type *flags)
-{
-	char	*string;
 	size_t	precision;
 	size_t	width;
 	char	chr;
-	char	*tmp;
 
-	getstring(flags, number, &string, &chr);
-	if (string[0] == '-')
+	chr = ' ';
+	if (number >= 0)
+		widandprec(number, flags, &width, &precision);
+	else
 		return (0);
-	tmp = string;
-	widandprec(string, flags, &width, &precision);
+	if (flags->nill == 1 && flags->dot != 1)
+		chr = '0';
 	if (flags->minus != 1)
 		printspace(width, precision, chr);
-	printspace(precision, ft_strlen(tmp), '0');
-	write(1, tmp, ft_strlen(tmp));
+	printspace(precision, ft_countnbr_dec(number), '0');
+	if (number == 0 && flags->dot == 1 && precision == 0)
+		;
+	else
+		ft_putnbr_dec(number);
 	if (flags->minus == 1)
 		printspace(width, precision, ' ');
-	free(string);
 	return ((int)width);
 }
