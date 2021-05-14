@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static void	widandprec(long long int num, t_type *fl, size_t *wid, size_t *prec)
+static void	widandprec(int num, t_type *fl, size_t *wid, size_t *prec)
 {
 	*prec = ft_countnbr_hex(num);
 	if (num == 0 && fl->dot == 1 && fl->precision == 0)
@@ -36,7 +36,7 @@ static void	printspace(size_t count1, size_t count2, int chr)
 		write(1, &chr, 1);
 }
 
-int	ptf_formattohex(long long int number, t_type *flags)
+int	ptf_formattohex(int number, t_type *flags)
 {
 	size_t	precision;
 	size_t	width;

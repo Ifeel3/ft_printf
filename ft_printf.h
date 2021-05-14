@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 01:12:29 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/13 22:07:25 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/14 23:03:49 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int		ptf_formattoptr(void *ptr, t_type *flags);
 int		ptf_formattoint(long long int number, t_type *flags);
 int		ptf_formattostr(char *string, t_type *flags);
 int		ptf_formattochr(int c, t_type *flags);
-int		ptf_formattohex(long long int number, t_type *flags);
-size_t	ft_countnbr_hex(long long int number);
-size_t	ft_putnbr_hex(unsigned long long int number, int type);
+int		ptf_formattohex(int number, t_type *flags);
+size_t	ft_countnbr_hex(unsigned int number);
+void	ft_putnbr_hex(unsigned int number, int type);
 size_t	ft_countnbr_dec(long long int number);
-size_t	ft_putnbr_dec(long long int number);
+void	ft_putnbr_dec(long long int number);
 #endif

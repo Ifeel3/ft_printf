@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/07 12:12:28 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/11 23:35:54 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/15 00:18:45 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ int	ptf_converter(char **string, va_list ap, int *printed_chars)
 		return (0);
 	if (!ptf_setupflags(string, flags, ap))
 		return (0);
+	if (flags->precision < 0)
+	{
+		flags->dot = 0;
+		flags->precision = 0;
+	}
 	if (flags->width < 0)
 	{
 		flags->minus = 1;

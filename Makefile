@@ -81,7 +81,7 @@ LIBOBJS	= $(LIBFT:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(LIBOBJS) $(OBJS) libft.h ft_printf.h
-	ar rcs $@ $(LIBOBJS) $(OBJS)
+	ar rcs $@ $?
 
 clean:
 	rm -f $(LIBOBJS)
@@ -99,4 +99,4 @@ norm:
 	$(NORMIN) $(HEADERS)
 
 test: $(LIB) $(NAME)
-	$(CC) $(FLAGS) -L. -lftprintf main.c -o test && ./test
+	$(CC) libftprintf.a main.c -o test && ./test
