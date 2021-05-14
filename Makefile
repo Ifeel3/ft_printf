@@ -82,6 +82,7 @@ all: $(NAME)
 
 $(NAME): $(LIBOBJS) $(OBJS) libft.h ft_printf.h
 	ar rcs $@ $?
+	ranlib $@
 
 clean:
 	rm -f $(LIBOBJS)

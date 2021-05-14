@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 15:26:55 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/15 00:44:12 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/15 01:29:16 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ptf_setupflags(char **string, t_type *flags, va_list ap)
 	{
 		if (**string == '-')
 			flags->minus = 1;
-		if (**string == '0' && !ft_isdigit(*(*string - 1)))
+		if (**string == '0' && *(*string - 1) == '%' )
 			flags->nill = 1;
 		if (**string == '.')
 			flags->dot = 1;
