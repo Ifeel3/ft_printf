@@ -26,14 +26,14 @@ typedef struct s_type
 }				t_type;
 
 int		ft_printf(char *string, ...);
-int		ptf_converter(char **string, va_list ap, int *printed_chars);
-int		ptf_setupflags(char **string, t_type *flags, va_list ap);
-void	ptf_checktype(t_type *flags, int *printed_chars, va_list ap);
-int		ptf_formattoptr(void *ptr, t_type *flags);
-int		ptf_formattoint(long long int number, t_type *flags);
-int		ptf_formattostr(char *string, t_type *flags);
-int		ptf_formattochr(int c, t_type *flags);
-int		ptf_formattohex(int number, t_type *flags);
+int		ft_converter(char **string, va_list ap, int *printed_chars);
+int		ft_setupflags(char **string, t_type *flags, va_list ap);
+void	ft_checktype(t_type *flags, int *printed_chars, va_list ap);
+int		ft_formattoptr(void *ptr, t_type *flags);
+int		ft_formattoint(long long int number, t_type *flags);
+int		ft_formattostr(char *string, t_type *flags);
+int		ft_formattochr(int c, t_type *flags);
+int		ft_formattohex(int number, t_type *flags);
 size_t	ft_countnbr_hex(unsigned int number);
 void	ft_putnbr_hex(unsigned int number, int type);
 size_t	ft_countnbr_dec(long long int number);

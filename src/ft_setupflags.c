@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static void	ptf_initflags(t_type *flags)
+static void	ft_initflags(t_type *flags)
 {
 	flags->minus = 0;
 	flags->dot = 0;
@@ -22,9 +22,9 @@ static void	ptf_initflags(t_type *flags)
 	flags->type = 0;
 }
 
-int	ptf_setupflags(char **string, t_type *flags, va_list ap)
+int	ft_setupflags(char **string, t_type *flags, va_list ap)
 {
-	ptf_initflags(flags);
+	ft_initflags(flags);
 	while (ft_isalpha(*(++(*string))) != 1 && **string != '%')
 	{
 		if (**string == '-')

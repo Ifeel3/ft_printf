@@ -79,7 +79,7 @@ static int	formneg(long long int num, t_type *flags, size_t *wid, size_t *prec)
 	return ((int)*wid);
 }
 
-int	ptf_formattoint(long long int number, t_type *flags)
+int	ft_formattoint(long long int number, t_type *flags)
 {
 	size_t	precision;
 	size_t	width;

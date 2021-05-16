@@ -12,7 +12,7 @@
 
 #include "../ft_printf.h"
 
-static void	ptf_printnullorspace(t_type *flags, size_t width, size_t precision)
+static void	ft_printnullorspace(t_type *flags, size_t width, size_t precision)
 {
 	char	chr;
 
@@ -24,7 +24,7 @@ static void	ptf_printnullorspace(t_type *flags, size_t width, size_t precision)
 		write(1, &chr, 1);
 }
 
-int	ptf_formattostr(char *string, t_type *flags)
+int	ft_formattostr(char *string, t_type *flags)
 {
 	size_t	precision;
 	size_t	width;
@@ -46,7 +46,7 @@ int	ptf_formattostr(char *string, t_type *flags)
 		width = precision;
 	if (flags->minus == 1)
 		write(1, string, precision);
-	ptf_printnullorspace(flags, width, precision);
+	ft_printnullorspace(flags, width, precision);
 	if (flags->minus == 0)
 		write(1, string, precision);
 	return ((int)width);

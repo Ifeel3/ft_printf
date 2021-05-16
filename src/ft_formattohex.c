@@ -36,7 +36,7 @@ static void	printspace(size_t count1, size_t count2, int chr)
 		write(1, &chr, 1);
 }
 
-int	ptf_formattohex(int number, t_type *flags)
+int	ft_formattohex(int number, t_type *flags)
 {
 	size_t	precision;
 	size_t	width;

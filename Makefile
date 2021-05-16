@@ -70,6 +70,8 @@ SRC		= src/ft_printf.c \
 		src/ft_formattochr.c \
 		src/ft_putnbr_hex.c \
 		src/ft_putnbr_dec.c \
+		src/ft_countnbr_dec.c \
+		src/ft_countnbr_hex.c \
 		src/ft_formattohex.c
 
 OBJS	= $(SRC:%.c=%.o)
