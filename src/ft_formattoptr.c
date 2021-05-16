@@ -6,94 +6,74 @@
 /*   By: lvallie <lvallie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 01:55:16 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/12 22:20:07 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/16 15:59:18 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static void	ptf_shiftstring(char *string)
+static size_t	ft_countptr_hex(unsigned long long int number)
 {
-	char	*start;
+	size_t	counter;
 
-	start = string;
-	while (*string == '0')
-		string++;
-	while (*string)
-		*start++ = *string++;
-	while (*start)
-		*start++ = 0;
+	counter = 0;
+	if (number > 15)
+		counter = ft_countptr_hex(number >> 4);
+	return (counter + 1);
 }
 
-static char	*ptf_convertpointertohex(void *ptr)
+static void	ft_putptr_hex(unsigned long long int number, int type)
 {
-	intptr_t	ptraddr;
-	char		*s;
-	int			i;
-
-	s = malloc(2 * sizeof(ptraddr) + 1);
-	if (!s)
-		return (NULL);
-	ptraddr = (intptr_t)&(*ptr);
-	i = 2 * sizeof(ptraddr);
-	s[i--] = 0;
-	while (i >= 0)
-	{
-		s[i] = "0123456789abcdef"[ptraddr & 0x0F];
-		ptraddr >>= 4;
-		i--;
-	}
-	ptf_shiftstring(s);
-	return (s);
+	if (number > 15)
+		ft_putptr_hex(number >> 4, type);
+	write(1, &"0123456789abcdef"[number & 0x0F], 1);
 }
 
-static void	widandprec(char *str, size_t *wid, size_t *prec, t_type *flags)
+static void	widandprec(unsigned long long int addr, t_type *fl, size_t *wid, size_t *prec)
 {
-	if (flags->dot == 1)
+	*prec = ft_countptr_hex(addr);
+	if (addr == 0 && fl->dot == 1 && fl->precision == 0)
+		*prec = 0;
+	else if (fl->dot == 1)
 	{
-		if ((size_t)flags->precision > ft_strlen(str))
-			*prec = flags->precision;
+		if (fl->precision < (int)ft_countptr_hex(addr))
+			*prec = ft_countptr_hex(addr);
 		else
-			*prec = ft_strlen(str);
+			*prec = fl->precision;
 	}
+	if (fl->width > (int)*prec)
+		*wid = fl->width;
 	else
-		*prec = ft_strlen(str);
-	if ((size_t)flags->width > *prec + 2)
-		*wid = flags->width;
-	else
-		*wid = *prec + 2;
+		*wid = *prec;
 }
 
-static void	printspace(size_t count1, size_t count2)
+static void	printspace(size_t count1, size_t count2, int chr)
 {
-	while (count1-- > count2 + 2)
-		write(1, " ", 1);
+	while (count1-- > count2)
+		write(1, &chr, 1);
 }
 
 int	ptf_formattoptr(void *ptr, t_type *flags)
 {
-	char	*string;
+	unsigned long long int addr;
 	size_t	precision;
 	size_t	width;
-	size_t	tmp;
+	char	chr;
 
-	if (ptr == NULL && flags->dot == 0)
-		string = "0";
-	else if (ptr == NULL && flags->dot == 1)
-		string = "";
-	else
-		string = ptf_convertpointertohex(ptr);
-	widandprec(string, &width, &precision, flags);
-	if (flags->minus != 1)
-		printspace(width, precision);
+	addr = (unsigned long long)&(*ptr);
+	chr = ' ';
+	widandprec(addr, flags, &width, &precision);
+	if (flags->nill == 1 && flags->dot != 1)
+		chr = '0';
 	write(1, "0x", 2);
-	tmp = precision;
-	while (tmp-- > ft_strlen(string))
-		write(1, "0", 1);
-	write(1, string, ft_strlen(string));
+	if (flags->minus != 1)
+		printspace(width, precision, chr);
+	printspace(precision, ft_countptr_hex(addr), '0');
+	if (addr == 0 && flags->dot == 1 && precision == 0)
+		;
+	else
+		ft_putptr_hex(addr, flags->type);
 	if (flags->minus == 1)
-		printspace(width, precision);
-	if (ptr)
-		free(string);
+		printspace(width, precision, ' ');
 	return ((int)width);
 }
