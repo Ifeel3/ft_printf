@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 01:55:16 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/16 15:59:18 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/16 16:14:44 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,19 @@ static void	ft_putptr_hex(unsigned long long int number, int type)
 
 static void	widandprec(unsigned long long int addr, t_type *fl, size_t *wid, size_t *prec)
 {
-	*prec = ft_countptr_hex(addr);
-	if (addr == 0 && fl->dot == 1 && fl->precision == 0)
-		*prec = 0;
-	else if (fl->dot == 1)
+	if (fl->dot == 1)
 	{
-		if (fl->precision < (int)ft_countptr_hex(addr))
-			*prec = ft_countptr_hex(addr);
-		else
+		if ((size_t)fl->precision > ft_countptr_hex(addr))
 			*prec = fl->precision;
+		else
+			*prec = ft_countptr_hex(addr);
 	}
-	if (fl->width > (int)*prec)
+	else
+		*prec = ft_countptr_hex(addr);
+	if ((size_t)fl->width > *prec + 2)
 		*wid = fl->width;
 	else
-		*wid = *prec;
+		*wid = *prec + 2;
 }
 
 static void	printspace(size_t count1, size_t count2, int chr)
@@ -65,15 +64,18 @@ int	ptf_formattoptr(void *ptr, t_type *flags)
 	widandprec(addr, flags, &width, &precision);
 	if (flags->nill == 1 && flags->dot != 1)
 		chr = '0';
-	write(1, "0x", 2);
+	if (chr == '0')
+		write(1, "0x", 2);
 	if (flags->minus != 1)
-		printspace(width, precision, chr);
+		printspace(width, precision + 2, chr);
+	if (chr == ' ')
+		write(1, "0x", 2);
 	printspace(precision, ft_countptr_hex(addr), '0');
 	if (addr == 0 && flags->dot == 1 && precision == 0)
 		;
 	else
 		ft_putptr_hex(addr, flags->type);
 	if (flags->minus == 1)
-		printspace(width, precision, ' ');
+		printspace(width, precision + 2, ' ');
 	return ((int)width);
 }

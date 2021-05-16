@@ -80,7 +80,7 @@ LIBOBJS	= $(LIBFT:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBOBJS) $(OBJS) libft.h ft_printf.h
+$(NAME): $(LIBOBJS) $(OBJS)
 	ar rcs $@ $?
 	ranlib $@
 
