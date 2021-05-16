@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 01:55:16 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/16 17:18:13 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/16 18:06:16 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void	widandprec(intptr_t addr, t_type *fl, size_t *wid, size_t *prec)
 	}
 	else
 		*prec = ft_countptr_hex(addr);
+	if (addr == 0 && fl->dot == 1 && fl->precision == 0)
+		*prec = 0;
 	if ((size_t)fl->width > *prec + 2)
 		*wid = fl->width;
 	else
@@ -71,7 +73,7 @@ int	ft_formattoptr(void *ptr, t_type *flags)
 	if (chr == ' ')
 		write(1, "0x", 2);
 	printspace(precision, ft_countptr_hex(addr), '0');
-	if (addr == 0 && flags->dot == 1 && precision == 0)
+	if ((addr == 0 || ptr == NULL) && flags->dot == 1 && flags->precision == 0)
 		;
 	else
 		ft_putptr_hex(addr, flags->type);
