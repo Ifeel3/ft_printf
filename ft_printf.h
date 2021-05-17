@@ -6,7 +6,7 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 01:12:29 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/16 16:20:40 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/17 18:06:20 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_type
 	char	type;
 }				t_type;
 
-int		ft_printf(char *string, ...);
+int		ft_printf(const char *str, ...);
 int		ft_converter(char **string, va_list ap, int *printed_chars);
 int		ft_setupflags(char **string, t_type *flags, va_list ap);
 void	ft_checktype(t_type *flags, int *printed_chars, va_list ap);

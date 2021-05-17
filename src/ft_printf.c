@@ -6,19 +6,21 @@
 /*   By: lvallie <lvallie@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 21:18:59 by lvallie           #+#    #+#             */
-/*   Updated: 2021/05/16 16:22:15 by lvallie          ###   ########.fr       */
+/*   Updated: 2021/05/17 18:06:20 by lvallie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-int	ft_printf(char *string, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	int		printed_chars;
+	char	*string;
 
+	string = (char *)str;
 	printed_chars = 0;
-	va_start(ap, string);
+	va_start(ap, str);
 	while (*string)
 	{
 		if (*string == '%')
